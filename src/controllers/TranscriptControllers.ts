@@ -37,7 +37,4 @@ export class TranscriptServiceController {
         
     }
 
-    public uploadTranscript(req: any, res: any){
-        // to be implemented
-    }
 }

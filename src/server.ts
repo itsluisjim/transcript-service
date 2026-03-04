@@ -27,7 +27,6 @@ export class AppServer {
         
         this.router.get('/list', (req, res) => this.transcriptServiceController.listTranscripts(req, res));
         this.router.get('/:id', (req: any, res: any) => this.transcriptServiceController.getTranscript(req, res, req.params.id));
-        this.router.post('/upload', (req, res) => this.transcriptServiceController.uploadTranscript(req, res));
 
         // global error handler
         this.server.use((err: any, req: any, res: any, next: any) => {

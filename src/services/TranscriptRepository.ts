@@ -74,8 +74,5 @@ export class TranscriptRepository {
     };
 
   }
-
-  public async uploadTranscriptToAwsS3Bucket(uuid: string, transcript: any) {
-      // to be implemented
-  }
+  
 }
