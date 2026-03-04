@@ -51,7 +51,28 @@ export class TranscriptRepository {
   }
 
   public async getTranscriptFromAwsS3Bucket(fileUUID: string) {
-    // to be implemented
+    
+    const uploadParams = {
+      Bucket: process.env.AWS_S3_TRANSCRIPT_BUCKET,
+      Key: fileUUID
+    };
+
+    const command = new GetObjectCommand(uploadParams);
+    const response = await this.s3Client.send(command);
+
+    if (!response.Body) {
+        throw new Error('No response body from S3');
+    }
+
+    // return stream data and metadata
+    return {
+        Body: response.Body,
+        ContentType: response.ContentType,
+        ContentLength: response.ContentLength,
+        ETag: response.ETag,
+        LastModified: response.LastModified
+    };
+
   }
 
   public async uploadTranscriptToAwsS3Bucket(uuid: string, transcript: any) {
